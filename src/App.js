@@ -9,20 +9,20 @@ function App() {
     const [ppConnect, setPpConnect] = useState(true);
     const [ppEmailVerified, setPpEmailVerified] = useState(true);
     const [ppOnboardLink, setPpOnboardLink] = useState(
-        "https://www.paypal.com"
+        "https://www.sandbox.paypal.com/bizsignup/partner/entry?referralToken=NmM5NDdhNjUtNWI4MS00YTViLTlmNDYtODI3NTQ5YWIxNTMwbkpxQVJyZnp4K0JUc1g4eDlPWDkvMkJ0eDZQZlZiQXkvS2lBcHdiR01KOD12Mg=="
     );
 
     const chipsLinkData = [
         {
-            text: "AAA - Change",
+            text: "AAA - Change Type",
             type: "link",
         },
         {
-            text: "BBB - Change",
+            text: "BBB - Change is-connect",
             type: "link",
         },
         {
-            text: "CCC - Change",
+            text: "CCC - Change is-email-verified",
             type: "link",
         },
     ];
@@ -30,38 +30,38 @@ function App() {
     const onChipClick = (item, index) => {
         alert(`${item?.text} - index : ${index} is being Clicked (被点击了)`);
 
-        debugger;
+        // debugger;
         switch (index) {
             case 0:
-                // clickFun0();
-                setPpType(ppType === "branded" ? "full-stack" : "branded");
+                clickFun0();
+                // setPpType(ppType === "branded" ? "full-stack" : "branded");
                 break;
 
             case 1:
-                // clickFun1();
-                setPpConnect(!ppConnect);
+                clickFun1();
+                // setPpConnect(!ppConnect);
                 break;
 
             case 2:
-                // clickFun2();
-                setPpEmailVerified(!ppEmailVerified);
+                clickFun2();
+                // setPpEmailVerified(!ppEmailVerified);
                 break;
         }
 
         console.log("current attribute:", ppDiv.current.dataset);
     };
 
-    // const clickFun0 = useCallback(() => {
-    //     setPpType(ppType === "branded" ? "full-stack" : "branded");
-    // }, [ppType]);
+    const clickFun0 = useCallback(() => {
+        setPpType(ppType === "branded" ? "full-stack" : "branded");
+    }, [ppType]);
 
-    // const clickFun1 = useCallback(() => {
-    //     setPpConnect(!ppConnect);
-    // }, [ppConnect]);
+    const clickFun1 = useCallback(() => {
+        setPpConnect(!ppConnect);
+    }, [ppConnect]);
 
-    // const clickFun2 = useCallback(() => {
-    //     setPpEmailVerified(!ppEmailVerified);
-    // }, [ppEmailVerified]);
+    const clickFun2 = useCallback(() => {
+        setPpEmailVerified(!ppEmailVerified);
+    }, [ppEmailVerified]);
 
     const myScript = document.createElement("script");
 
@@ -83,7 +83,7 @@ function App() {
         return () => {
             document.body.removeChild(myScript);
         };
-    }, []);
+    }, [myScript]);
 
     return (
         <div className="App">
